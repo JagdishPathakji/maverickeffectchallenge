@@ -33,7 +33,25 @@ export const LanguageProvider = ({ children }) => {
       document.cookie = `googtrans=/en/${langObj.code}; path=/; domain=${window.location.hostname};`;
     }
     
-    window.location.reload();
+    // Attempt to trigger Google Translate without reloading the page
+    const gtCombo = document.querySelector('.goog-te-combo');
+    if (gtCombo) {
+      gtCombo.value = langObj.code === 'en' ? 'en' : langObj.code;
+      gtCombo.dispatchEvent(new Event('change'));
+      
+      // If returning to English, sometimes we need to restore original explicitly or reload
+      if (langObj.code === 'en') {
+        const iframe = document.querySelector('iframe.goog-te-banner-frame');
+        if (iframe && iframe.contentWindow) {
+          try {
+             const restoreBtn = iframe.contentWindow.document.querySelector('.goog-te-button button');
+             if (restoreBtn) restoreBtn.click();
+          } catch (e) {}
+        }
+      }
+    } else {
+      window.location.reload();
+    }
   };
 
   return (
