@@ -31,6 +31,10 @@ const AnalysisResult = ({ result }) => {
               Confidence: {result.confidence_score}%
             </span>
           </div>
+          <div className="mt-4 inline-flex items-center text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800/50 px-3 py-1.5 rounded-md">
+            <ShieldCheck className="w-4 h-4 mr-1.5 text-green-500" />
+            100% Privacy Guaranteed: Your media and messages are never stored on our servers.
+          </div>
         </div>
       </div>
 
