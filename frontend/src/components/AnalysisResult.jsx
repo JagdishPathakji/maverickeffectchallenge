@@ -95,6 +95,18 @@ const AnalysisResult = ({ result }) => {
           </ul>
         </div>
       )}
+
+      {/* Cyber Crime Portal Link */}
+      {!isSafe && (
+        <a 
+          href="https://cybercrime.gov.in/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="mt-6 block w-full text-center bg-red-100 hover:bg-red-200 dark:bg-red-900/30 dark:hover:bg-red-900/50 text-red-700 dark:text-red-400 font-bold py-3 px-4 rounded-lg border border-red-300 dark:border-red-800 transition-colors shadow-sm"
+        >
+          🚨 Report this to National Cyber Crime Portal (1930)
+        </a>
+      )}
     </div>
   );
 };
